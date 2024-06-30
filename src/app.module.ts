@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TemaModule } from './tema/tema.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { HistModule } from './hist/hist.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
     TemaModule,
+    HistModule,
   ],
   controllers: [],
   providers: [],
