@@ -8,5 +8,6 @@ import { Hist } from './entities/hist.entity';
   imports: [TypeOrmModule.forFeature([Hist])],
   controllers: [HistController],
   providers: [HistService],
+  exports: [TypeOrmModule],
 })
 export class HistModule {}
