@@ -1,7 +1,9 @@
+import { Hist } from 'src/hist/entities/hist.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -12,6 +14,11 @@ export class Tema {
 
   @Column()
   tema: string;
+
+  @OneToMany(() => Hist, (hist) => hist.tema, {
+    eager: true,
+  })
+  hist: Hist[];
 
   @DeleteDateColumn()
   deleted: string;
