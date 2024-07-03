@@ -40,14 +40,26 @@ export class HistService {
     });
 
     if (!hist) {
-      throw new BadRequestException('No existe');
+      throw new BadRequestException('No existe la hiztoria');
     }
 
     return hist;
   }
 
   async update(id: number, updateHistDto: UpdateHistDto) {
-    return await this.histRepository.update(id, updateHistDto);
+    await this.findOne(id);
+    const tema = await this.temaRepository.findOne({
+      where: { id: updateHistDto.temaId },
+    });
+
+    if (!tema) {
+      throw new BadRequestException('no existe tema');
+    }
+
+    return await this.histRepository.update(id, {
+      ...updateHistDto,
+      title: updateHistDto.title,
+    });
   }
 
   async remove(id: number) {
