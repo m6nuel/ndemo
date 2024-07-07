@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TemaModule } from './tema/tema.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HistModule } from './hist/hist.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { HistModule } from './hist/hist.module';
     }),
     TemaModule,
     HistModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
