@@ -11,9 +11,7 @@ export class UserService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
   async create(createUserDto: CreateUserDto) {
-    const email = await this.userRepository.findOneBy({
-      email: createUserDto.email,
-    });
+    const email = this.findByEmail(createUserDto.email);
     if (!email) {
       return await this.userRepository.save(createUserDto);
     }
@@ -38,5 +36,12 @@ export class UserService {
 
   async remove(id: number) {
     return await this.userRepository.softDelete(id);
+  }
+
+  async findByEmail(email: string) {
+    const em = await this.userRepository.findOneBy({
+      email,
+    });
+    return em;
   }
 }

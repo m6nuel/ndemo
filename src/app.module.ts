@@ -3,6 +3,7 @@ import { TemaModule } from './tema/tema.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HistModule } from './hist/hist.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UserModule } from './user/user.module';
     TemaModule,
     HistModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
