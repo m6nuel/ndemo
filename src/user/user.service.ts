@@ -11,11 +11,11 @@ export class UserService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
   async create(createUserDto: CreateUserDto) {
-    const email = this.findByEmail(createUserDto.email);
-    if (!email) {
-      return await this.userRepository.save(createUserDto);
-    }
-    throw new BadRequestException('El usuario ya existe');
+    // const email = this.findByEmail(createUserDto.email);
+    // if (!email) {
+    return await this.userRepository.save(createUserDto);
+    // }
+    // throw new BadRequestException('El usuario ya existe');
   }
 
   async findAll() {

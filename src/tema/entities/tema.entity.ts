@@ -1,8 +1,11 @@
-import { Hist } from 'src/hist/entities/hist.entity';
+import { Hist } from '../../hist/entities/hist.entity';
+import { User } from '../../user/entities/user.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -19,6 +22,13 @@ export class Tema {
     eager: true,
   })
   hist: Hist[];
+
+  @ManyToOne(() => User, (user) => user.email)
+  @JoinColumn({ name: 'userEmail' })
+  user: User;
+
+  @Column()
+  userEmail: number;
 
   @DeleteDateColumn()
   deleted: string;
