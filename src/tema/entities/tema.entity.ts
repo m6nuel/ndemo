@@ -1,11 +1,11 @@
 import { Hist } from '../../hist/entities/hist.entity';
-import { User } from '../../user/entities/user.entity';
+// import { User } from '../../user/entities/user.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  // JoinColumn,
+  // ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -23,12 +23,12 @@ export class Tema {
   })
   hist: Hist[];
 
-  @ManyToOne(() => User, (user) => user.email)
-  @JoinColumn({ name: 'userEmail' })
-  user: User;
+  // @ManyToOne(() => User, (user) => user.email)
+  // @JoinColumn({ name: 'userEmail' })
+  // user: User;
 
-  @Column()
-  userEmail: number;
+  // @Column()
+  // userEmail: string;
 
   @DeleteDateColumn()
   deleted: string;

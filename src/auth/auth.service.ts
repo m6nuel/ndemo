@@ -39,6 +39,13 @@ export class AuthService {
     // if (role !== 'admin') {
     //   throw new UnauthorizedException('No Autorizado');
     // }
-    return await this.userService.findByEmail(email);
+    const user = await this.userService.findByEmail(email);
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      deleted: user.deleted,
+    };
   }
 }

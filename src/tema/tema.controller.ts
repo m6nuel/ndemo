@@ -10,11 +10,14 @@ import {
 import { TemaService } from './tema.service';
 import { CreateTemaDto } from './dto/create-tema.dto';
 import { UpdateTemaDto } from './dto/update-tema.dto';
+// import { Auth } from '../auth/decorators/auth.decorator';
+// import { Role } from '../common/enums/rol.enum';
 
 @Controller('tema')
 export class TemaController {
   constructor(private readonly temaService: TemaService) {}
 
+  // @Auth(Role.User)
   @Post()
   create(@Body() createTemaDto: CreateTemaDto) {
     return this.temaService.create(createTemaDto);
