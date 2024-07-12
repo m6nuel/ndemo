@@ -34,4 +34,3 @@ export class AuthController {
     return this.authService.profile(user); //req.user
   }
 }
-//https://www.youtube.com/watch?v=D6_dhpzPOvU&t=1897s

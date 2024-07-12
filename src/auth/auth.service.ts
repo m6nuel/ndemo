@@ -20,7 +20,7 @@ export class AuthService {
       throw new BadRequestException('usuario no registrado');
     }
 
-    const payload = { email: user.email, role: user.role };
+    const payload = { email: user.email, role: user.role, id: user.id };
 
     return {
       access_token: await this.jwtService.signAsync(payload),
