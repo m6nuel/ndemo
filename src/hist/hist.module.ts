@@ -6,9 +6,10 @@ import { Hist } from './entities/hist.entity';
 import { TemaService } from '../tema/tema.service';
 // import { Tema } from 'src/tema/entities/tema.entity';
 import { TemaModule } from '../tema/tema.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Hist]), TemaModule],
+  imports: [TypeOrmModule.forFeature([Hist]), TemaModule, AuthModule],
   controllers: [HistController],
   providers: [HistService, TemaService],
   exports: [TypeOrmModule],
