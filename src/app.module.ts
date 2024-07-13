@@ -20,6 +20,15 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.P_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
+      ssl: process.env.P_SSL === 'true',
+      extra: {
+        ssl:
+          process.env.P_SSL === 'true'
+            ? {
+                rejectUnauthorized: false,
+              }
+            : null,
+      },
     }),
     TemaModule,
     HistModule,
