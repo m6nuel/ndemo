@@ -8,8 +8,8 @@ import { LoginDto } from './dto/login.dto';
 // import { RoleGuard } from './guard/role.guard';
 import { Role } from '../common/enums/rol.enum';
 import { Auth } from './decorators/auth.decorator';
-import { ActiveUser } from 'src/common/decorators/ActiveUser.decorator';
-import { UserActiveInterface } from 'src/common/interface/userActive.interface';
+import { ActiveUser } from '../common/decorators/ActiveUser.decorator';
+import { UserActiveInterface } from '../common/interface/userActive.interface';
 
 @Controller('auth')
 export class AuthController {

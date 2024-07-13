@@ -4,7 +4,7 @@ import { UpdateHistDto } from './dto/update-hist.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Hist } from './entities/hist.entity';
 import { Repository } from 'typeorm';
-import { Tema } from 'src/tema/entities/tema.entity';
+import { Tema } from '../tema/entities/tema.entity';
 
 @Injectable()
 export class HistService {
