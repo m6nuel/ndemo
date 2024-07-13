@@ -4,16 +4,20 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HistModule } from './hist/hist.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3307,
-      username: 'userndemo',
-      password: 'root',
-      database: 'ndemo',
+      type: 'postgres',
+      host: process.env.P_HOST,
+      port: parseInt(process.env.P_PORT),
+      username: process.env.P_USERNAME,
+      password: process.env.P_PASSWORD,
+      database: process.env.P_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
     }),

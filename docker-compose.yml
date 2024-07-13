@@ -1,18 +1,15 @@
 version: "3.8"
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: mysqldb
+  posgresDB:
+    image: postgres:13
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ndemo
-      MYSQL_USER: userndemo
-      MYSQL_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ndemo
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
     ports:
-      - "3307:3306"
+      - "5436:5432"
 volumes:
-  mysql_data:
-    driver: local
+  postgres_data:
