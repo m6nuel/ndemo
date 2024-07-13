@@ -15,6 +15,12 @@ export class Hist {
   @Column()
   title: string;
 
+  @Column({ nullable: true })
+  img: string;
+
+  @Column({ nullable: true })
+  description: string;
+
   @ManyToOne(() => Tema, (tema) => tema.id)
   @JoinColumn({ name: 'temaId' })
   tema: Tema;
