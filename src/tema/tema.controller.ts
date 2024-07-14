@@ -14,13 +14,23 @@ import { Auth } from '../auth/decorators/auth.decorator';
 import { Role } from '../common/enums/rol.enum';
 import { ActiveUser } from '../common/decorators/ActiveUser.decorator';
 import { UserActiveInterface } from '../common/interface/userActive.interface';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
+@ApiTags('Temas')
+@ApiBearerAuth()
 @Controller('tema')
 export class TemaController {
   constructor(private readonly temaService: TemaService) {}
 
   @Auth(Role.User)
   @Post()
+  @ApiCreatedResponse({ description: 'El tema se creo exitosamente' })
+  @ApiUnauthorizedResponse({ description: 'No esta autorizado' })
   create(
     @Body() createTemaDto: CreateTemaDto,
     @ActiveUser() user: UserActiveInterface,

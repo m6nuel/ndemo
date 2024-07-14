@@ -71,3 +71,56 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+### Para documentar api
+```
+ yarn add @nestjs/swagger -SE 
+```
+
+### Configuracion incial de Swagger main.ts
+```
+const config = new DocumentBuilder()
+    .setTitle('ndemo')
+    .setDescription('Api de ndemo')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, document);
+```
+
+### SwaggerModule.setup('docs', app, document); 'docs' seria el endpoint donde aparece la documentacion de la api
+
+
+### Para la documentacion de los dto vamos a la carpeta nest-cli.json
+### El archivo original esta asi: 
+```
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true
+  }
+}
+```
+## Le agregamos:
+```
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "plugins": ["@nestjs/swagger]
+  }
+}
+```
+### bajamos el servidor eliminamos la carpeta dist y lo volvemos a levantar
+
+## Para ordenar nuestros endpoints grupandolos usamos el decorador @ApiTags('nombre_del_grupo')
+
+## Decorador para los token @ApiBearerAuth()
+
+## Para las respuestas de los endpoint podemos usar https://docs.nestjs.com/openapi/operations
