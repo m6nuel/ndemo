@@ -1,5 +1,5 @@
 import {
-  BadRequestException,
+  // BadRequestException,
   Injectable,
   // UnauthorizedException,
 } from '@nestjs/common';
@@ -14,10 +14,11 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
   ) {}
-  async login({ email }: LoginDto) {
-    const user = await this.userService.findByEmail(email);
+  async login(loginDto: LoginDto) {
+    const user = await this.userService.findByEmail(loginDto.email);
     if (!user) {
-      throw new BadRequestException('usuario no registrado');
+      await this.register(loginDto);
+      // throw new BadRequestException('usuario no registrado');
     }
 
     const payload = { email: user.email, role: user.role, id: user.id };
@@ -30,9 +31,11 @@ export class AuthService {
   async register(registerDto: RegisterDto) {
     const user = await this.userService.findByEmail(registerDto.email);
     if (!user) {
-      return this.userService.create(registerDto);
+      const userc = this.userService.create(registerDto);
+      return userc;
     }
-    throw new BadRequestException('El usuario ya existe');
+    return user;
+    // throw new BadRequestException('El usuario ya existe');
   }
 
   async profile({ email }: { email: string; role: string }) {

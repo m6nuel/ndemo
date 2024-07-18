@@ -1,6 +1,7 @@
 import { Tema } from '../../tema/entities/tema.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -27,4 +28,7 @@ export class Hist {
 
   @Column()
   temaId: number;
+
+  @CreateDateColumn()
+  create: Date;
 }

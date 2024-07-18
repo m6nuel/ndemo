@@ -2,6 +2,7 @@ import { Hist } from '../../hist/entities/hist.entity';
 import { User } from '../../user/entities/user.entity';
 import {
   Column,
+  CreateDateColumn,
   DeleteDateColumn,
   Entity,
   JoinColumn,
@@ -29,6 +30,9 @@ export class Tema {
 
   @Column()
   userId: number;
+
+  @CreateDateColumn()
+  create: Date;
 
   @DeleteDateColumn()
   deleted: string;

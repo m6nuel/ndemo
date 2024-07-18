@@ -2,6 +2,7 @@ import { Role } from '../../common/enums/rol.enum';
 import { Tema } from '../../tema/entities/tema.entity';
 import {
   Column,
+  CreateDateColumn,
   DeleteDateColumn,
   Entity,
   OneToMany,
@@ -19,6 +20,9 @@ export class User {
   @Column({ nullable: true })
   name: string;
 
+  @Column({ nullable: true })
+  image: string;
+
   @OneToMany(() => Tema, (tema) => tema.user, {
     eager: true,
   })
@@ -26,6 +30,9 @@ export class User {
 
   @Column({ type: 'enum', default: Role.User, enum: Role })
   role: Role;
+
+  @CreateDateColumn()
+  create: Date;
 
   @DeleteDateColumn()
   deleted: Date;

@@ -5,3 +5,7 @@ export interface UserActiveInterface {
   role: string;
   deleted: string;
 }
+
+export interface RegLog {
+  email: string;
+}

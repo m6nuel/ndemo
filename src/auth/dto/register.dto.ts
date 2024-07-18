@@ -8,4 +8,8 @@ export class RegisterDto {
   @IsString()
   @Length(3, 30)
   name: string;
+
+  @IsOptional()
+  @IsString()
+  image: string;
 }

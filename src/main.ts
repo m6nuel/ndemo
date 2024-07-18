@@ -8,6 +8,8 @@ async function bootstrap() {
 
   app.setGlobalPrefix('v1/');
 
+  app.enableCors();
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
